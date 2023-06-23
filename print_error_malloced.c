@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   print_error_malloced.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:33:39 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 20:18:15 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/23 20:17:43 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <unistd.h>
 #include "e_private_errors.h"
 
 static char	*private_strerr(int code);
 
-int	print_error(int private_errno)
+int	print_error(int private_errno, void *memory)
 {
 	const char *const	str = private_strerr(private_errno);
 	const char			*ptr;
 
+	if (memory != NULL)
+		free(memory);
 	if (str == NULL)
 		return (code);
 	ptr = str;

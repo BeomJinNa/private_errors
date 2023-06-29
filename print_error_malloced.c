@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:33:39 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 20:17:43 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/29 20:55:35 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	print_error(int private_errno, void *memory)
 	if (memory != NULL)
 		free(memory);
 	if (str == NULL)
-		return (code);
+		return (1);
 	ptr = str;
 	while (*ptr)
 		ptr++;
 	write(2, "Error: ", 7);
 	write(2, str, ptr - str);
 	write(2, "\n", 1);
-	return (code);
+	return (1);
 }
 
 static char	*private_strerr(int code)
